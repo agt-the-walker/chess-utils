@@ -18,8 +18,12 @@ http://omegachess.ru/. It accepts the following flags:
 
 # Usage
 
-    $ vim ~/.netrc  # adapt accordingly
-    machine omegachess.ru login <your login on http://omegachess.ru/>
+Please run the following command the first time:
+
+    # replace "Agt" below by your http://omegachess.ru/ login
+    $ echo 'machine omegachess.ru login Agt' >>~/.netrc
+
+Then:
 
     $ ./omegachess-pending
-    2  # it's your move in two games
+    2  # i.e. it's your move in two games
