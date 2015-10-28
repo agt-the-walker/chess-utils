@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'getoptlong'
 require 'netrc'
 require 'nokogiri'
 require 'open-uri'
@@ -7,6 +8,26 @@ require 'uri'
 
 URL = 'http://omegachess.ru/omega/games.php'
 HOST = URI.parse(URL).host
+
+##### Argument parsing
+
+def usage()
+  abort "Usage: #$0 [--genmon]"
+end
+
+options = {}
+GetoptLong.new(
+  ['--help', '-h', GetoptLong::NO_ARGUMENT],
+  ['--genmon', GetoptLong::NO_ARGUMENT]
+).each do |name, value|
+  options[name.sub(/^--/, '').to_sym] = value
+end
+
+if options[:help] or not ARGV.empty?
+  usage
+end
+
+##### Main program
 
 n = Netrc.read[HOST]
 unless n and n.login
@@ -31,4 +52,9 @@ doc.xpath('//table/tr').drop(1).each do |row|
   end
 end
 
-puts nb_pending_games
+if options[:genmon] and nb_pending_games > 0
+  # thanks https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=674727
+  puts %Q{<txt><span color="red">#{nb_pending_games}</span></txt>}
+else
+  puts nb_pending_games
+end

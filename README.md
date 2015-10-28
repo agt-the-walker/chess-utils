@@ -3,7 +3,10 @@
 ## omegachess-pending
 
 Print the number of pending games (i.e. with your turn to move) on
-http://omegachess.ru/.
+http://omegachess.ru/. It accepts the following flags:
+* `--genmon`: if there are pending games, print the number in red using
+  [xfce4-genmon-plugin](http://goodies.xfce.org/projects/panel-plugins/xfce4-genmon-plugin)
+  XML tags
 
 
 # Requirements
