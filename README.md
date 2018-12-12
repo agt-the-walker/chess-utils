@@ -1,7 +1,16 @@
 [![Build Status](https://travis-ci.org/agt-the-walker/chess-utils.svg?branch=master)](https://travis-ci.org/agt-the-walker/chess-utils)
 
 
-# crc-first-row
+# Table of contents
+
+* [Utilities](#utilities)
+* [On Chess variants](#on-chess-variants)
+
+
+# Utilities
+
+
+## crc-first-row
 
 This program prints
 [Capablanca Random Chess](http://brainking.com/en/GameRules?tp=75) positions
@@ -10,7 +19,7 @@ bother filtering out Gothic Chess positions since the patent for Gothic Chess
 expired long ago.
 
 
-## Requirements
+### Requirements
 
 * [Boost Program Options](http://www.boost.org/doc/libs/1_57_0/doc/html/program_options.html)
 * [GNU Compiler Collection (GCC)](http://www.gnu.org/software/gcc/), recent
@@ -18,7 +27,7 @@ expired long ago.
 * [GNU Make](http://www.gnu.org/software/make/)
 
 
-## Usage
+### Usage
 
     $ cd ~/src/git/chess-utils  # adapt accordingly
 
@@ -48,7 +57,7 @@ expired long ago.
     NBBRKQACNR
 
 
-# omegachess-pending
+## omegachess-pending
 
 Print the number of pending games (i.e. with your turn to move) on
 http://omegachess.ru/. It accepts the following flags:
@@ -57,14 +66,14 @@ http://omegachess.ru/. It accepts the following flags:
   XML tags
 
 
-## Requirements
+### Requirements
 
 * [Ruby](http://www.ruby-lang.org/en/) 2.0.0+
 * [Nokogiri](https://rubygems.org/gems/nokogiri) gem
 * [netrc](https://rubygems.org/gems/netrc) gem
 
 
-## Usage
+### Usage
 
 Please run the following command the first time:
 
@@ -75,3 +84,30 @@ Then:
 
     $ ./omegachess-pending
     2  # i.e. it's your move in two games
+
+
+# On Chess variants
+
+
+## Article
+
+Some ideas described in
+[On Shogi variants](https://github.com/agt-the-walker/shogi-utils#on-shogi-variants)
+are also applicable to Chess, such as randomizing the starting position.
+
+The [King of the Hill](https://lichess.org/variant/kingOfTheHill) additional
+winning condition looks promising to reduce the high draw rate in top Chess
+(https://en.chessbase.com/post/opinion-12-draws-not-really-exciting). Since
+winning with the bare king might be a bit too much, we could amend this
+additional winning condition like this:
+
+> If your previous move legally got your King to one of the center squares,
+> it's your turn to play, you're not checkmated or stalemated and you don't
+> have to move your King, then you win.
+
+
+## Play by forum
+
+I'd like to try:
+* https://boardgamegeek.com/thread/1949867/chess960-king-hill-and-pie-rule
+* https://boardgamegeek.com/thread/2094499/capablanca-random-chess-king-hill-and-pie-rule
