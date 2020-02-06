@@ -111,3 +111,4 @@ additional winning condition like this:
 I'd like to try:
 * https://boardgamegeek.com/thread/1949867/chess960-king-hill-and-pie-rule
 * https://boardgamegeek.com/thread/2094499/capablanca-random-chess-king-hill-and-pie-rule
+* https://boardgamegeek.com/thread/2352280/chess960-awkward-castling-rule
