@@ -57,10 +57,110 @@ expired long ago.
     NBBRKQACNR
 
 
+## double-pawn-moves
+
+This program prints the following statistics on provided FIDE Chess games for
+the player who castled first:
+* number of pawns still on starting squares when he castles
+* number of double pawn moves before his opponent castles
+* number of double pawn moves after his opponent castles
+
+I wrote this following my post ("Agt the Walker") in the comment section of
+https://en.chessbase.com/post/alphazero-kramnik-exploring-new-chess-variants,
+about Awkward Castling (see also [Play by forum](#play-by-forum)).
+
+
+### Requirements
+
+* [Python](https://www.python.org/) 3.6+
+* [python-chess](https://pypi.org/project/python-chess/) Python package
+
+
+### Usage
+
+Download `wchcand18.pgn` (for example) from
+https://theweekinchess.com/chessnews/events/fide-candidates-tournament-2018,
+then:
+
+    $ stats=$(./double-pawn-moves <../chess/twic/wchcand18.pgn)
+
+    # number of games in Candidates Tournament 2018
+    $ wc -l <<< $stats
+    56
+
+    # number of games without any castling moves (i.e. no statictics)
+    $ grep -c '^$' <<< $stats
+    8
+
+    # statistics for games with one castling move
+    #  1st column: number of pawns still on starting squares
+    #              for castling player when he castles
+    #  2nd column: number of double pawn moves after castling move
+    #              for castling player
+    $ awk 'NF == 2' <<< $stats
+    4 0
+    7 3
+    6 0
+    3 1
+    5 2
+    7 3
+    5 2
+    5 1
+    6 0
+    4 2
+
+    # statistics for games with two castling moves
+    #  1st column: number of pawns still on starting squares
+    #              for first castling player when he castles
+    #  2nd column: number of double pawn moves between both castling moves
+    #              for first castling player
+    #  3rd column: number of double pawn moves after second castling move
+    #              for first castling player
+    $ awk 'NF == 3' <<< $stats
+    6 0 0
+    3 0 0
+    6 0 2
+    7 0 0
+    6 0 1
+    7 1 1
+    4 0 2
+    7 0 2
+    3 0 0
+    5 0 0
+    6 0 2
+    6 0 2
+    5 0 1
+    6 0 0
+    7 0 3
+    5 0 0
+    7 1 1
+    5 0 3
+    6 0 3
+    6 0 2
+    5 1 3
+    6 0 0
+    7 0 2
+    6 0 1
+    6 0 1
+    5 0 1
+    6 0 1
+    6 1 2
+    6 0 2
+    5 0 1
+    7 0 2
+    6 1 3
+    7 0 3
+    4 0 0
+    7 0 2
+    7 0 0
+    6 0 1
+    5 0 1
+
+
 ## omegachess-pending
 
-Print the number of pending games (i.e. with your turn to move) on
-http://omegachess.ru/. It accepts the following flags:
+This program prints the number of pending games (i.e. with your turn to move)
+on http://omegachess.ru/. It accepts the following flags:
 * `--genmon`: if there are pending games, print the number in red using
   [xfce4-genmon-plugin](http://goodies.xfce.org/projects/panel-plugins/xfce4-genmon-plugin)
   XML tags
