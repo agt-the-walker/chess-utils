@@ -38,7 +38,7 @@ user = n.login
 nb_pending_games = 0
 
 begin
-  doc = Nokogiri::HTML(open(URL))
+  doc = Nokogiri::HTML(URI.open(URL))
 rescue Exception => e
   if options[:genmon]
     puts '?'
