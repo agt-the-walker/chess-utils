@@ -193,18 +193,23 @@ Then:
 
 Some ideas described in
 [On Shogi variants](https://github.com/agt-the-walker/shogi-utils#on-shogi-variants)
-are also applicable to Chess, such as randomizing the starting position.
+are also applicable to Chess, such as randomizing the starting position
+(https://www.uschesschamps.com/2020-champions-showdown-chess-9lx/).
 
-The [King of the Hill](https://lichess.org/variant/kingOfTheHill) additional
-winning condition looks promising to reduce the high draw rate in top Chess
-(https://en.chessbase.com/post/opinion-12-draws-not-really-exciting). Since
-winning with the bare king might be a bit too much, we could amend this
+Also winning by legally moving one's king to specific square(s) looks promising
+to reduce the high draw rate in top Chess
+(https://en.chessbase.com/post/opinion-12-draws-not-really-exciting). This
+includes [King of the Hill](https://lichess.org/variant/kingOfTheHill) but
+there are more possibilities:
+https://en.boardgamearena.com/forum/viewtopic.php?f=88&t=17273.
+
+Since winning with the bare king might be a bit too much, we could amend this
 additional winning condition like this:
 
-> If your previous move legally got your King to one of the center squares,
-> it's your turn to play, you're not checkmated or stalemated and you don't
-> have to move your King, then you win.
-
+> If your previous move legally got your King to one of the target squares
+> (i.e. center squares for King of the Hill), it's your turn to play, you're
+> not checkmated or stalemated and you don't have to move your King, then you
+> win.
 
 ## Play by forum
 
