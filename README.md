@@ -59,8 +59,8 @@ expired long ago.
 
 ## double-pawn-moves
 
-This program prints the following statistics on provided FIDE Chess games for
-the player who castled first:
+This program prints the following statistics on provided FIDE Chess or Chess
+960 games for the player who castled first:
 * number of pawns still on starting squares when he castles
 * number of double pawn moves before his opponent castles
 * number of double pawn moves after his opponent castles
@@ -78,19 +78,19 @@ about Awkward Castling (see also [Play by forum](#play-by-forum)).
 
 ### Usage
 
-Download `wchcand18.pgn` (for example) from
-https://theweekinchess.com/chessnews/events/fide-candidates-tournament-2018,
+Download `champshow9lx20.pgn` (for example) from
+https://theweekinchess.com/chessnews/events/champions-showdown-9lx-2020,
 then:
 
-    $ stats=$(./double-pawn-moves <../chess/twic/wchcand18.pgn)
+    $ stats=$(./double-pawn-moves <../chess/twic/champshow9lx20.pgn)
 
-    # number of games in Candidates Tournament 2018
+    # number of games in Champions Showdown 9LX 2020
     $ wc -l <<< $stats
-    56
+    45
 
     # number of games without any castling moves (i.e. no statictics)
     $ grep -c '^$' <<< $stats
-    8
+    2
 
     # statistics for games with one castling move
     #  1st column: number of pawns still on starting squares
@@ -98,16 +98,16 @@ then:
     #  2nd column: number of double pawn moves after castling move
     #              for castling player
     $ awk 'NF == 2' <<< $stats
-    4 0
-    7 3
-    6 0
+    4 3
+    5 4
+    6 3
     3 1
+    6 1
+    8 5
     5 2
-    7 3
-    5 2
-    5 1
-    6 0
-    4 2
+    6 3
+    4 3
+    3 0
 
     # statistics for games with two castling moves
     #  1st column: number of pawns still on starting squares
@@ -117,44 +117,39 @@ then:
     #  3rd column: number of double pawn moves after second castling move
     #              for first castling player
     $ awk 'NF == 3' <<< $stats
-    6 0 0
-    3 0 0
-    6 0 2
-    7 0 0
-    6 0 1
-    7 1 1
-    4 0 2
-    7 0 2
-    3 0 0
-    5 0 0
-    6 0 2
-    6 0 2
     5 0 1
-    6 0 0
-    7 0 3
-    5 0 0
-    7 1 1
-    5 0 3
+    5 1 1
     6 0 3
-    6 0 2
-    5 1 3
+    7 1 1
+    6 0 4
+    4 0 3
+    4 0 2
+    5 0 2
+    5 0 1
     6 0 0
-    7 0 2
-    6 0 1
+    5 0 0
+    6 1 1
+    5 0 0
+    5 0 2
+    5 0 2
     6 0 1
     5 0 1
-    6 0 1
-    6 1 2
+    4 0 1
     6 0 2
-    5 0 1
-    7 0 2
-    6 1 3
+    3 0 0
+    4 0 3
+    3 0 0
+    5 1 2
+    8 0 2
     7 0 3
-    4 0 0
-    7 0 2
-    7 0 0
     6 0 1
-    5 0 1
+    7 0 4
+    6 0 0
+    5 1 0
+    5 1 0
+    4 0 3
+    4 0 2
+    3 0 3
 
 
 ## omegachess-pending
