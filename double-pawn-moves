@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+import re
+import sys
+
+import chess.pgn
+
+PAWN_STARTING_SQUARES = {chess.WHITE: chess.BB_RANK_2,
+                         chess.BLACK: chess.BB_RANK_7}
+DOUBLE_PAWN_REGEXPS = {chess.WHITE: r'^\w2-\w4', chess.BLACK: r'\w7-\w5'}
+
+
+def num_pawns_starting_square(board):
+    return len(board.pieces(chess.PAWN, board.turn).intersection(
+        PAWN_STARTING_SQUARES[board.turn]))
+
+
+while True:
+    game = chess.pgn.read_game(sys.stdin)
+    if not game:
+        break
+    castling_players = []  # max 2 elements (if both players have castled)
+
+    num_pawns_starting_square_before_1st_castle = None
+    double_pawn_moves_after_1st_castle = []  # max 2 elements (")
+
+    board = game.board()
+    for move in game.mainline_moves():
+        lan = board.lan(move)
+
+        if lan.startswith('O-'):
+            if not castling_players:
+                num_pawns_starting_square_before_1st_castle = \
+                        num_pawns_starting_square(board)
+            castling_players.append(board.turn)
+            double_pawn_moves_after_1st_castle.append(0)
+        elif (re.match(DOUBLE_PAWN_REGEXPS[board.turn], lan) and
+              castling_players and castling_players[0] == board.turn):
+            double_pawn_moves_after_1st_castle[len(castling_players)-1] += 1
+
+        board.push(move)
+
+    if castling_players:
+        stats = [num_pawns_starting_square_before_1st_castle] + \
+                double_pawn_moves_after_1st_castle
+        print(' '.join([str(stat) for stat in stats]))
+    else:
+        print()
