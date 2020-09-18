@@ -88,7 +88,7 @@ then:
     $ wc -l <<< $stats
     45
 
-    # number of games without any castling moves (i.e. no statictics)
+    # number of games without any castling moves (i.e. no statistics)
     $ grep -c '^$' <<< $stats
     2
 
