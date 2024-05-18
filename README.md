@@ -73,8 +73,8 @@ about Awkward Castling (see also [Play by forum](#play-by-forum)).
 
 ### Requirements
 
-* [Python](https://www.python.org/) 3.6+
-* [python-chess](https://pypi.org/project/python-chess/) Python package
+* [Python](https://www.python.org/) 3.8+
+* [chess](https://pypi.org/project/chess/) Python package
 
 
 ### Usage
