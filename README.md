@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/agt-the-walker/chess-utils.svg?branch=master)](https://travis-ci.org/agt-the-walker/chess-utils)
+![Python workflow](https://github.com/agt-the-walker/chess-utils/actions/workflows/pythonapp.yml/badge.svg)
+![C++ workflow](https://github.com/agt-the-walker/chess-utils/actions/workflows/cpp.yml/badge.svg)
 
 
 # Table of contents
