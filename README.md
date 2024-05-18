@@ -14,7 +14,7 @@
 ## crc-first-row
 
 This program prints
-[Capablanca Random Chess](http://brainking.com/en/GameRules?tp=75) positions
+[Capablanca Random Chess](https://brainking.com/en/GameRules?tp=75) positions
 with optional restrictions. K = King, N = Knight, etc. Note that I didn't
 bother filtering out Gothic Chess positions since the patent for Gothic Chess
 expired long ago.
@@ -22,10 +22,10 @@ expired long ago.
 
 ### Requirements
 
-* [Boost Program Options](http://www.boost.org/doc/libs/1_57_0/doc/html/program_options.html)
-* [GNU Compiler Collection (GCC)](http://www.gnu.org/software/gcc/), recent
+* [Boost Program Options](https://www.boost.org/doc/libs/1_85_0/doc/html/program_options.html)
+* [GNU Compiler Collection (GCC)](https://www.gnu.org/software/gcc/), recent
   enough to support C++11
-* [GNU Make](http://www.gnu.org/software/make/)
+* [GNU Make](https://www.gnu.org/software/make/)
 
 
 ### Usage
@@ -161,7 +161,7 @@ then:
 Some ideas described in
 [On Shogi variants](https://github.com/agt-the-walker/shogi-utils#on-shogi-variants)
 are also applicable to Chess, such as randomizing the starting position
-(https://www.uschesschamps.com/2020-champions-showdown-chess-9lx/).
+(https://uschesschamps.com/2023-champions-showdown-chess-9lx/overview).
 
 Also winning by legally moving one's king to specific square(s) looks promising
 to reduce the high draw rate in top Chess
